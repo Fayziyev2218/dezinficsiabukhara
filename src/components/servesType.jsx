@@ -11,7 +11,7 @@ export default function ServesType({ title, text, img }) {
     });
   }, []);
   return (
-    <div className="w-[380px] max-[1240px]:w-[48%] max-[800px]:w-full bg-[#c4f7cb] p-[20px] rounded-3xl flex flex-col h-full">
+    <div className="w-full bg-[#c4f7cb] p-[20px] rounded-3xl flex flex-col h-full">
       <h2 className="text-[#023104] text-[32px] font-bold mb-[25px] max-sm:text-[22px] max-sm:mb-[22px]">
         {title}
       </h2>

@@ -331,7 +331,7 @@ function App() {
             >
               {translations[language].main.serviceType}
             </h2>
-            <div className="flex flex-wrap  items-stretch justify-start gap-[30px]">
+            <div className="grid grid-cols-3 max-[1250px]:grid-cols-2 max-md:grid-cols-1 gap-[30px]">
               <ServesType
                 img={hashorat}
                 title={translations[language].main.insects}
@@ -412,7 +412,7 @@ function App() {
               <h3 className="text-[#242825] text-[16px] font-bold mb-[16px]">
               {translations[language].main.information}
               </h3>
-              <form id="myForm" className="flex flex-col" onSubmit={SendMessage}>
+              {/* <form id="myForm" className="flex flex-col" onSubmit={SendMessage}>
                 <input
                 id="name"
                   placeholder={translations[language].main.infoName}
@@ -453,7 +453,48 @@ function App() {
                   {translations[language].main.send}
                   </a>
                 </button>
-              </form>
+              </form> */}
+
+<form id="myForm" className="flex flex-col" onSubmit={SendMessage}>
+  <input
+    id="name"
+    placeholder={translations[language].main.infoName}
+    type="text"
+    required
+    className="bg-[#e4e4e4] p-[10px] rounded-[5px] mb-[20px] border-2 border-transparent focus:border-yellow-500 outline-none"
+  />
+
+  <input
+    id="number"
+    type="text"
+    placeholder="+998-94-033-72-12"
+    required
+    className="bg-[#e4e4e4] p-[10px] rounded-[5px] mb-[20px] border-2 border-transparent focus:border-yellow-500 outline-none"
+    onInput={(e) => {
+      let value = e.target.value.replace(/\D/g, ""); // Faqat raqamlarni olish
+      if (!value.startsWith("998")) value = "998" + value;
+      value = value.substring(0, 12);
+      
+      let formatted = `+${value.substring(0, 3)}`;
+      if (value.length > 3) formatted += ` ${value.substring(3, 5)}`;
+      if (value.length > 5) formatted += `-${value.substring(5, 8)}`;
+      if (value.length > 8) formatted += `-${value.substring(8, 10)}`;
+      if (value.length > 10) formatted += `-${value.substring(10, 12)}`;
+      
+      e.target.value = formatted;
+    }}
+  />
+
+  <button
+    type="submit"
+    className="w-full bg-green-700 py-[10px] max-[920px]:py-[8px] px-[26px] rounded-[5px] hover:bg-green-700/70"
+  >
+    <a className="text-[17px] font-bold text-white max-[920px]:text-[16px]">
+      {translations[language].main.send}
+    </a>
+  </button>
+</form>
+
             </div>
           </div>
         </div>
